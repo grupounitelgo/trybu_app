@@ -5,6 +5,7 @@ import 'package:trybu/pages/premium_payment/premium_payment_page.dart';
 import '../../../core/ui/styles/app_colors.dart';
 import '../../../core/ui/styles/app_icons.dart';
 import '../../../core/ui/styles/app_typography.dart';
+import '../../plan_types/plan_types.dart';
 import '../home_page.dart';
 
 class DrawerComponent extends StatefulWidget {
@@ -53,7 +54,7 @@ class _DrawerComponentState extends State<DrawerComponent> {
             title: const Text('Aderir Trybu Premium'),
             onTap: (() {
               Navigator.pop(context);
-              showModal();
+              Navigator.push(context, MaterialPageRoute(builder: (_)=>PlanTypes()));
             }),
           ),
           ListTile(
