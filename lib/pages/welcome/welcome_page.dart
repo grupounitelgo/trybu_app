@@ -21,9 +21,12 @@ class _WelcomePageState extends State<WelcomePage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-         decoration: const BoxDecoration(
-                    image: DecorationImage(image: AssetImage('assets/images/2.jpg', ), fit: BoxFit.cover)
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(
+                    'assets/images/2.jpg',
                   ),
+                  fit: BoxFit.cover)),
           width: context.screenWidth,
           height: context.screenHeight,
           child: Column(
@@ -31,9 +34,11 @@ class _WelcomePageState extends State<WelcomePage> {
               Expanded(
                 child: Container(
                   decoration: const BoxDecoration(
-                    image: DecorationImage(image: AssetImage('assets/images/2.jpg'))
-                  )
-                )
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/2.jpg'),
+                    ),
+                  ),
+                ),
               ),
               Expanded(
                 child: Container(
@@ -46,35 +51,32 @@ class _WelcomePageState extends State<WelcomePage> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Padding(
-                          padding: const EdgeInsets.only(left: 12),
-                          child: Text(
-                            'Bem-vindo a\nTrybu',
-                            style: AppTypography.bodyTextBold(context)!
-                                .copyWith(
-                                    fontSize: 30, fontWeight: FontWeight.w900),
+                        padding: const EdgeInsets.only(left: 12),
+                        child: Text(
+                          'Bem-vindo a\nTrybu',
+                          style: AppTypography.bodyTextBold(context)!.copyWith(
+                              fontSize: 30, fontWeight: FontWeight.w900),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 12),
+                        child: Text(
+                          'Para mulheres que desejam assumir o controlo do espectáculo de suas vidas',
+                          style: AppTypography.bodyTextNormal(context)!
+                              .copyWith(fontSize: 15, color: AppColors.black54),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 12),
+                        child: Text(
+                          'Atreve-te',
+                          style: AppTypography.bodyTextBold(context)!.copyWith(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w900,
+                            color: AppColors.brownColor,
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 12),
-                          child: Text(
-                            'Para mulheres que desejam assumir o controlo do espectáculo de suas vidas',
-                            style: AppTypography.bodyTextNormal(context)!
-                                .copyWith(
-                                    fontSize: 15, color: AppColors.black54),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 12),
-                          child: Text(
-                            'Atreve-te',
-                            style:
-                                AppTypography.bodyTextBold(context)!.copyWith(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w900,
-                              color: AppColors.brownColor,
-                            ),
-                          ),
-                        ),
+                      ),
                       SizedBox(
                         height: 45,
                         child: ElevatedButton(
