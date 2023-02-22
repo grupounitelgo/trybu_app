@@ -38,7 +38,7 @@ class _SplashPageState extends State<SplashPage> {
             children: [
               const SizedBox(),
             
-             Image.asset('assets/images/logoTr.png', width: 67, height:67, color: AppColors.brownColor,),
+             Image.asset(AppIcons.appLogo, width: 67, height:67, color: AppColors.brownColor,),
               const Padding(
                 padding: EdgeInsets.only(bottom: 20),
                 child: CircularProgressIndicator(
