@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:trybu/core/helpers/size_extension.dart';
-import 'package:trybu/pages/premium_payment/premium_payment_page.dart';
-
 import '../../../core/ui/styles/app_colors.dart';
 import '../../../core/ui/styles/app_icons.dart';
 import '../../../core/ui/styles/app_typography.dart';
-import '../../plan_types/plan_types.dart';
+import '../../premium_payment/plan_types/plan_types.dart';
 import '../home_page.dart';
 
 class DrawerComponent extends StatefulWidget {
-  const DrawerComponent({Key? key}) : super(key: key);
-
+  const DrawerComponent({Key? key, required this.userEmail}) : super(key: key);
+  final String userEmail;
   @override
   State<DrawerComponent> createState() => _DrawerComponentState();
 }
@@ -31,7 +29,7 @@ class _DrawerComponentState extends State<DrawerComponent> {
                     height: 30,
                   )),
               accountName: const Text('Grupo 3'),
-              accountEmail: const Text('grupo3@gmail.com')),
+              accountEmail: Text(widget.userEmail)),
           ListTile(
             leading: Image.asset(
               AppIcons.user,
@@ -54,7 +52,8 @@ class _DrawerComponentState extends State<DrawerComponent> {
             title: const Text('Aderir Trybu Premium'),
             onTap: (() {
               Navigator.pop(context);
-              Navigator.push(context, MaterialPageRoute(builder: (_)=>PlanTypes()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => const PlanTypes()));
             }),
           ),
           ListTile(

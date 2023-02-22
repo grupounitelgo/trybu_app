@@ -5,7 +5,6 @@ import 'package:trybu/core/ui/styles/app_colors.dart';
 import 'package:trybu/core/ui/styles/app_style.dart';
 import 'package:trybu/core/ui/styles/app_typography.dart';
 
-
 import '../../stores/sign_up/sign_up_store.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -67,9 +66,11 @@ class _SignUpPageState extends State<SignUpPage> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(bottom: 25),
-                        child: Text('Registrar', style: AppTypography.bodyTextBold(context)!.copyWith(
-                          fontSize: 20
-                        ),),
+                        child: Text(
+                          'Registrar',
+                          style: AppTypography.bodyTextBold(context)!
+                              .copyWith(fontSize: 20),
+                        ),
                       ),
                       TextFormField(
                         keyboardType: TextInputType.name,
@@ -80,31 +81,37 @@ class _SignUpPageState extends State<SignUpPage> {
                         controller: _cName,
                         validator: signUpStore.validateName,
                       ),
-                      const SizedBox(height: 15,),
+                      const SizedBox(
+                        height: 15,
+                      ),
                       TextFormField(
                         controller: _cEmail,
                         keyboardType: TextInputType.emailAddress,
                         onChanged: signUpStore.setEmail,
                         decoration: AppStyle.inputDecorationStyle.copyWith(
-                       suffixIcon: const Icon(Icons.email_outlined),
+                          suffixIcon: const Icon(Icons.email_outlined),
                           hintText: 'E-mail',
                         ),
                         validator: signUpStore.validateEmail,
                       ),
-                      const SizedBox(height: 10,),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       TextFormField(
                         onChanged: signUpStore.setPhoneNumber,
                         keyboardType: TextInputType.number,
                         controller: _cNumberPhone,
                         maxLength: 9,
-                        
                         decoration: AppStyle.inputDecorationStyle.copyWith(
-                            hintText: 'Informe o seu telefone',
-                            counterText: '',suffixIcon: const Icon(Icons.phone),),
-                            
+                          hintText: 'Informe o seu telefone',
+                          counterText: '',
+                          suffixIcon: const Icon(Icons.phone),
+                        ),
                         validator: signUpStore.validatePhoneNumber,
                       ),
-                      const SizedBox(height: 15,),
+                      const SizedBox(
+                        height: 15,
+                      ),
                       TextFormField(
                         controller: _cPassword,
                         obscureText: !signUpStore.passWordVisible,
@@ -123,7 +130,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                         validator: signUpStore.validatePassword,
                       ),
-                      const SizedBox(height: 15,),
+                      const SizedBox(
+                        height: 15,
+                      ),
                       TextFormField(
                         onChanged: signUpStore.setConfirmPassword,
                         decoration: AppStyle.inputDecorationStyle.copyWith(
@@ -148,29 +157,38 @@ class _SignUpPageState extends State<SignUpPage> {
                         child: ElevatedButton(
                             child: const Text('Registar conta'),
                             onPressed: () async {
-                                    final valid =
-                                        _formKey.currentState!.validate();
-                                    if (valid) {
-                                      signUpStore.isLoading;
-                                      currentFocus.hasPrimaryFocus
-                                          ? currentFocus.unfocus()
-                                          : null;
-                                          await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _cEmail.text.trim(), password: _cPassword.text.trim());
-                                    } else {
-                                      !signUpStore.loading;
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                        const SnackBar(
-                                          backgroundColor: AppColors.red,
-                                          content: Text(
-                                            'Ocorreu um erro ao fazer registro',
-                                            style:
-                                                TextStyle(color: AppColors.white),
+                              final valid = _formKey.currentState!.validate();
+                              if (valid) {
+                                signUpStore.isLoading;
+                                currentFocus.hasPrimaryFocus
+                                    ? currentFocus.unfocus()
+                                    : null;
+                                showDialog(
+                                    context: context,
+                                    builder: (_) => const Center(
+                                          child: CircularProgressIndicator(
+                                            color: AppColors.brownColor,
                                           ),
-                                        ),
-                                      );
-                                    }
-                                  }
-                                ),
+                                        ),);
+                                await FirebaseAuth.instance
+                                    .createUserWithEmailAndPassword(
+                                        email: _cEmail.text.trim(),
+                                        password: _cPassword.text.trim());
+                                Navigator.of(context).pop();
+                                Navigator.pushNamed(context, 'homePage');
+                              } else {
+                                !signUpStore.loading;
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    backgroundColor: AppColors.red,
+                                    content: Text(
+                                      'Ocorreu um erro ao fazer registro',
+                                      style: TextStyle(color: AppColors.white),
+                                    ),
+                                  ),
+                                );
+                              }
+                            }),
                       ),
                       const SizedBox(
                         height: 5,

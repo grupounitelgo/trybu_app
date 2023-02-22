@@ -23,6 +23,7 @@ class AppColors {
 
   static const backgroundColor = Color(0xfff5f5f5);
   static const yellow = Color(0xffD8973D);
+  static const textFieldBorder =  Color.fromARGB(255, 202, 201, 201);
   //static const grey = Color.fromARGB(255, 224, 222, 222);
   static const greyTransparent = Color(0xffE6EEEB);
   static const brownColor = Color(0xff781D00);

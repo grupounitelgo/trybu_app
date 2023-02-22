@@ -21,91 +21,31 @@ class _WelcomePageState extends State<WelcomePage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+         decoration: const BoxDecoration(
+                    image: DecorationImage(image: AssetImage('assets/images/2.jpg', ), fit: BoxFit.cover)
+                  ),
           width: context.screenWidth,
           height: context.screenHeight,
           child: Column(
             children: [
               Expanded(
                 child: Container(
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(image: AssetImage('assets/images/2.jpg'))
+                  )
+                )
+              ),
+              Expanded(
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 40, horizontal: 12),
                   decoration:
                       const BoxDecoration(color: AppColors.backgroundColor),
                   child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 40),
-                                  child: Container(
-                                    width: 100,
-                                    height: 230,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(29),
-                                        boxShadow: const [
-                                          BoxShadow(
-                                            color: AppColors.brownColor,
-                                            blurRadius: 20.0,
-                                            spreadRadius: 1.0,
-                                          )
-                                        ]),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(29),
-                                      child: Container(
-                                        color: AppColors.brownColor,
-                                        child: Opacity(
-                                          opacity: 0.50,
-                                          child: Image.asset(
-                                              'assets/images/1.jpg',
-                                              fit: BoxFit.cover),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 40),
-                                  child: Container(
-                                    width: 100,
-                                    height: 230,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(29),
-                                        boxShadow: const [
-                                          BoxShadow(
-                                            color: AppColors.brownColor,
-                                            blurRadius: 20.0,
-                                            spreadRadius: 1.0,
-                                          )
-                                        ]),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(29),
-                                      child: Container(
-                                        color: AppColors.brownColor,
-                                        child: Opacity(
-                                          opacity: 0.50,
-                                          child: Image.asset(
-                                            'assets/images/2.jpg',
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              ]),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Padding(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Padding(
                           padding: const EdgeInsets.only(left: 12),
                           child: Text(
                             'Bem-vindo a\nTrybu',
@@ -135,39 +75,28 @@ class _WelcomePageState extends State<WelcomePage> {
                             ),
                           ),
                         ),
-                      ]),
-                ),
-              ),
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 40, horizontal: 12),
-                decoration:
-                    const BoxDecoration(color: AppColors.backgroundColor),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    SizedBox(
-                      height: 45,
-                      child: ElevatedButton(
-                        onPressed: () =>
-                            Navigator.pushNamed(context, 'signInPage'),
-                        child: const Text('Entrar'),
+                      SizedBox(
+                        height: 45,
+                        child: ElevatedButton(
+                          onPressed: () =>
+                              Navigator.pushNamed(context, 'signInPage'),
+                          child: const Text('Entrar'),
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    SizedBox(
-                      height: 45,
-                      child: OutlinedButton(
-                        style: AppStyle.outlineButtonTheme,
-                        onPressed: () =>
-                            Navigator.pushNamed(context, 'signUpPage'),
-                        child: const Text('Registar'),
+                      const SizedBox(
+                        height: 15,
                       ),
-                    ),
-                  ],
+                      SizedBox(
+                        height: 45,
+                        child: OutlinedButton(
+                          style: AppStyle.outlineButtonTheme,
+                          onPressed: () =>
+                              Navigator.pushNamed(context, 'signUpPage'),
+                          child: const Text('Registar'),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               )
             ],

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:trybu/core/helpers/size_extension.dart';
@@ -23,6 +24,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final eventRepositories = EventRepositories();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+  final user = FirebaseAuth.instance.currentUser!;
   int currentIndex=0;
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class _HomePageState extends State<HomePage> {
     ));
     return Scaffold(
       key: _scaffoldKey,
-      drawer: const DrawerComponent(),
+      drawer:  DrawerComponent(userEmail: user.email!),
       body: SafeArea(
         child: Stack(
           children: [

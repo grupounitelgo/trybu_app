@@ -8,7 +8,7 @@ const String imagePath = 'assets/images/logo/';
 const String pathIcons = 'assets/icons/';
 
 class AppIcons {
-  static const appLogo = '${imagePath}lg.svg';
+  static const appLogo = '${imagePath}logo.png';
   static const rectangle = '${imagePath}rectangle.svg';
   static const String google = '${pathIcons}google.png';
   static const String apple = '${pathIcons}apple.png';

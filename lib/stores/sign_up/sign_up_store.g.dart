@@ -189,6 +189,28 @@ mixin _$SignUpStore on _SignUpStore, Store {
       ActionController(name: '_SignUpStore', context: context);
 
   @override
+  void togglePasswordVisible() {
+    final _$actionInfo = _$_SignUpStoreActionController.startAction(
+        name: '_SignUpStore.togglePasswordVisible');
+    try {
+      return super.togglePasswordVisible();
+    } finally {
+      _$_SignUpStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void toggleConfirmPassword() {
+    final _$actionInfo = _$_SignUpStoreActionController.startAction(
+        name: '_SignUpStore.toggleConfirmPassword');
+    try {
+      return super.toggleConfirmPassword();
+    } finally {
+      _$_SignUpStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setName(dynamic value) {
     final _$actionInfo = _$_SignUpStoreActionController.startAction(
         name: '_SignUpStore.setName');

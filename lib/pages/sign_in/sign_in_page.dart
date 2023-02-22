@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:trybu/core/helpers/size_extension.dart';
 
 import 'package:trybu/core/ui/styles/app_colors.dart';
 import 'package:trybu/core/ui/styles/app_style.dart';
@@ -39,143 +40,190 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            reverse: true,
-            physics: const BouncingScrollPhysics(),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Image.asset(
-                      'assets/images/logoTr.png',
-                      width: 67,
-                      height: 67,
-                      color: AppColors.brownColor,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Observer(builder: (_) {
-                      return TextFormField(
-                          controller: _cEmail,
-                          keyboardType: TextInputType.emailAddress,
-                          onChanged: signInStore.setEmail,
-                          decoration: AppStyle.inputDecorationStyle.copyWith(
-                            hintText: 'E-mail',
-                            suffixIcon: IconButton(
-                              onPressed: signInStore.togglePassword,
-                              icon: const Icon(Icons.email_outlined),
-                            ),
-                          ),
-                          validator: signInStore.validateEmail);
-                    }),
-                    const SizedBox(height: 10),
-                    Observer(builder: (_) {
-                      return TextFormField(
-                        controller: _cPassword,
-                        onChanged: signInStore.setPassword,
-                        validator: signInStore.validatePassword,
-                        obscureText: !signInStore.passwordVisible,
-                        decoration: AppStyle.inputDecorationStyle.copyWith(
-                          hintText: 'Palavra-passe',
-                          suffixIcon: IconButton(
-                            onPressed: signInStore.togglePassword,
-                            icon: Icon(
-                              !signInStore.passwordVisible
-                                  ? Icons.lock_outline_rounded
-                                  : Icons.lock_open_outlined,
-                            ),
+      backgroundColor: Color.fromARGB(255, 226, 226, 226),
+      body: SingleChildScrollView(
+        reverse: true,
+        child: SizedBox(
+          width: context.screenWidth,
+          height: context.screenHeight,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Container(
+                  width: context.screenWidth,
+                  height: context.screenHeight,
+                  color: Color.fromARGB(255, 226, 226, 226),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 0, right: 12),
+                        child: Align(
+                          alignment: Alignment.topRight,
+                          child: Image.asset(
+                            AppIcons.appLogo,
+                            width: 120,
+                            height: 120,
+                            color: AppColors.brownColor,
                           ),
                         ),
-                      );
-                    }),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: CustomizeTextButton(
-                        text: 'Esqueceu a senha?',
-                        onPressed: () {},
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                      height: 45,
-                      child: ElevatedButton(
-                        child: const Text('Entrar'),
-                        onPressed: () {
-                          final valid = _formKey.currentState!.validate();
-                          if (valid) {
-                            signInStore.loading;
-                            currentFocus.hasPrimaryFocus
-                                ? currentFocus.unfocus()
-                                : null;
-
-                            signIn();
-                            Navigator.pushReplacementNamed(context, 'homePage');
-                            print('logou');
-                          } else {
-                            setState(() {
-                              !signInStore.loading;
-                            });
-                            _cPassword.clear();
-                          }
-                        },
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: const [
-                        Expanded(
-                          child: Divider(
-                            thickness: 0.5,
-                            color: AppColors.primaryColor,
-                          ),
-                        ),
-                        Text(' Ou continue com '),
-                        Expanded(
-                          child: Divider(
-                            thickness: 0.5,
-                            color: AppColors.primaryColor,
-                          ),
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        SocialButtonTile(
-                          imagePath: AppIcons.google,
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        SocialButtonTile(
-                          imagePath: AppIcons.apple,
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                  ],
+                      const SizedBox(height: 15),
+                    ],
+                  ),
                 ),
               ),
-            ),
+              Expanded(
+                flex: 2,
+                child: Container(
+                  width: context.screenWidth,
+                  height: context.screenHeight,
+                  padding: const EdgeInsets.all(12),
+                  decoration: const BoxDecoration(
+                    color: AppColors.backgroundColor,
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(20),
+                      topLeft: Radius.circular(20),
+                    ),
+                  ),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Observer(builder: (_) {
+                          return TextFormField(
+                              controller: _cEmail,
+                              keyboardType: TextInputType.emailAddress,
+                              onChanged: signInStore.setEmail,
+                              decoration:
+                                  AppStyle.inputDecorationStyle.copyWith(
+                                hintText: 'E-mail',
+                                suffixIcon: Icon(Icons.email_outlined),
+                              ),
+                              validator: signInStore.validateEmail);
+                        }),
+                        const SizedBox(height: 10),
+                        Observer(builder: (_) {
+                          return TextFormField(
+                            controller: _cPassword,
+                            onChanged: signInStore.setPassword,
+                            validator: signInStore.validatePassword,
+                            obscureText: !signInStore.passwordVisible,
+                            decoration: AppStyle.inputDecorationStyle.copyWith(
+                              hintText: 'Palavra-passe',
+                              suffixIcon: IconButton(
+                                onPressed: signInStore.togglePassword,
+                                icon: Icon(
+                                  !signInStore.passwordVisible
+                                      ? Icons.visibility_outlined
+                                      : Icons.visibility_off_outlined,
+                                ),
+                              ),
+                            ),
+                          );
+                        }),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: CustomizeTextButton(
+                            text: 'Esqueceu a senha?',
+                            onPressed: () {},
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        SizedBox(
+                          height: 45,
+                          child: ElevatedButton(
+                            child: const Text('Entrar'),
+                            onPressed: () async {
+                              final valid = _formKey.currentState!.validate();
+                              if (valid) {
+                                signInStore.loading;
+                                currentFocus.hasPrimaryFocus
+                                    ? currentFocus.unfocus()
+                                    : null;
+                                showDialog(
+                                  context: context,
+                                  builder: (_) => const Center(
+                                    child: CircularProgressIndicator(
+                                      color: AppColors.brownColor,
+                                    ),
+                                  ),
+                                );
+                                 await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _cEmail.text.trim(), password: _cPassword.text.trim());
+                                Navigator.pushReplacementNamed(
+                                    context, 'homePage');
+                                print('logou');
+                              } else {
+                                _cPassword.clear();
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    backgroundColor: AppColors.red,
+                                    content: Text(
+                                      'Ocorreu um erro ao efectuar login',
+                                      style: TextStyle(color: AppColors.white),
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          children: const [
+                            Expanded(
+                              child: Divider(
+                                  thickness: 0.5,
+                                  color: AppColors.textFieldBorder),
+                            ),
+                            Text(' Ou continue com '),
+                            Expanded(
+                              child: Divider(
+                                  thickness: 0.5,
+                                  color: AppColors.textFieldBorder),
+                            )
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            SocialButtonTile(
+                              imagePath: AppIcons.google,
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            SocialButtonTile(
+                              imagePath: AppIcons.apple,
+                            )
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

@@ -35,9 +35,9 @@ class LetsSupportYou extends StatelessWidget {
                   ],
                 ),
               ),
-              const ItemSupport(icon:Icons.chat, name: 'Chat',description: 'Conecta-te para 1-1 e em grupos',color: AppColors.brownColor,),
+              const ItemSupport(icon:Icons.chat, name: 'Consultoria',description: 'Conecta-te para 1-1 e em grupos',color: AppColors.brownColor,),
               const Divider(thickness: 0.5,),
-              const ItemSupport(icon:Icons.groups_outlined,name: 'Comunidade',description:'Faça questões e tenha suporte',color: Color.fromARGB(255, 226, 208, 48),),
+              const ItemSupport(icon:Icons.groups_outlined,name: 'Marketplace',description:'Faça questões e tenha suporte',color: Color.fromARGB(255, 226, 208, 48),),
               const Divider(thickness: 0.5,),
               const ItemSupport(icon:Icons.rocket_launch_outlined,name: 'Projecção',description: 'Dê passos para crescer e aprender',color: AppColors.green,)
             ],

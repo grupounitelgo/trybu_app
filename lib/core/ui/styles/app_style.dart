@@ -10,13 +10,12 @@ class AppStyle {
     primary: AppColors.primaryColor,
     elevation: 0,
     onPrimary: AppColors.white,
-    shape:  RoundedRectangleBorder(
-     borderRadius: BorderRadius.circular(11),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(11),
     ),
   );
 
   static ButtonStyle outlineButtonTheme = OutlinedButton.styleFrom(
-   
     primary: AppColors.brownColor,
     side: const BorderSide(color: AppColors.brownColor),
     elevation: 0,
@@ -26,24 +25,29 @@ class AppStyle {
     ),
   );
 
-  static BottomNavigationBarThemeData themeBottomNavigation = const  BottomNavigationBarThemeData(
-     backgroundColor: AppColors.backgroundColor,
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: AppColors.brownColor,
-      unselectedItemColor: Colors.grey,
-      elevation: 10,
-      selectedLabelStyle: TextStyle(
-        fontWeight: FontWeight.w600,
-      ),
+  static BottomNavigationBarThemeData themeBottomNavigation =
+      const BottomNavigationBarThemeData(
+    backgroundColor: AppColors.backgroundColor,
+    type: BottomNavigationBarType.fixed,
+    selectedItemColor: AppColors.brownColor,
+    unselectedItemColor: Colors.grey,
+    elevation: 10,
+    selectedLabelStyle: TextStyle(
+      fontWeight: FontWeight.w600,
+    ),
   );
 
   static InputDecoration inputDecorationStyle = const InputDecoration(
     isDense: true,
-    fillColor: Color.fromARGB(255, 228, 228, 228),
-    filled: true,
-    hintStyle: TextStyle(color: AppColors.brownColor),
-    border: OutlineInputBorder(
-      borderSide: BorderSide.none,
+    hintStyle: TextStyle(color: AppColors.grey),
+    border: UnderlineInputBorder(
+      borderSide: BorderSide(color:AppColors.textFieldBorder),
+    ),
+    enabledBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color:AppColors.textFieldBorder)
+    ),
+    focusedBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color:AppColors.textFieldBorder)
     ),
   );
 }

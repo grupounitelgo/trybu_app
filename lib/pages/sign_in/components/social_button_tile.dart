@@ -19,6 +19,6 @@ class SocialButtonTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(16)
         ),
         padding:const  EdgeInsets.all(20),
-        child: Image.asset(imagePath, height: 40,));
+        child: Image.asset(imagePath, height: 25,));
   }
 }
